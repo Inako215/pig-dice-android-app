@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 
-const val RESET_SCORE_ON_ONES = false
+const val RESET_SCORE_ON_ONES = true
 
 class MainActivity : AppCompatActivity() {
 
