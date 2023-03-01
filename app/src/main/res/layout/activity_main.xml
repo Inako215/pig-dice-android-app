@@ -213,32 +213,33 @@
         android:id="@+id/ivDice1"
         android:layout_width="112dp"
         android:layout_height="122dp"
+        android:contentDescription="@string/die_1"
         app:layout_constraintBottom_toBottomOf="@+id/ivDice2"
         app:layout_constraintEnd_toStartOf="@+id/tvTurnTotal"
         app:layout_constraintStart_toStartOf="@+id/tvYouTurnTotal"
         app:layout_constraintTop_toTopOf="@+id/ivDice2"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/dice_1"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/dice_1" />
 
     <ImageView
         android:id="@+id/ivDice2"
         android:layout_width="108dp"
         android:layout_height="124dp"
+        android:contentDescription="@string/die_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tvComputerTurnTotal"
         app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toEndOf="@+id/tvTurnTotal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.433"
-        app:srcCompat="@drawable/dice_2"
-        android:contentDescription="New Game" />
+        app:srcCompat="@drawable/dice_2" />
 
     <ImageView
         android:id="@+id/ivWinLose"
         android:layout_width="257dp"
         android:layout_height="134dp"
         android:clickable="true"
+        android:contentDescription="@string/winlose"
         android:onClick="newRound"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
