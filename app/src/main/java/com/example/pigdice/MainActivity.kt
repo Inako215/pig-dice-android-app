@@ -4,13 +4,13 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
+import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 
-const val RESET_SCORE_ON_ONES = true
+const val RESET_SCORE_ON_ONES = false
 
 class MainActivity : AppCompatActivity() {
 
@@ -81,6 +81,45 @@ class MainActivity : AppCompatActivity() {
         ivWinLose.visibility = View.GONE
     }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        tvYou.text = savedInstanceState.getString("TV_YOU")
+        tvYouGamesWon.text = savedInstanceState.getString("tvYouGamesWon")
+        playerTotalScore = savedInstanceState.getInt("tvYouTotalScore")
+        playerTurnScore = savedInstanceState.getInt("tvYouTurnTotal")
+        tvComputerGamesWon.text = savedInstanceState.getString("tvComputerGamesWon")
+        compTotalScore = savedInstanceState.getInt("tvComputerTotalScore")
+        compTurnScore = savedInstanceState.getInt("tvComputerTurnTotal")
+        tvScore.text = savedInstanceState.getString("tvScore")
+        playerTurn = savedInstanceState.getBoolean("playerTurn")
+        gameOver = savedInstanceState.getBoolean("gameOver")
+
+        tvYouTotalScore.text = playerTotalScore.toString()
+        tvYouTurnTotal.text = playerTurnScore.toString()
+        tvComputerTotalScore.text = compTotalScore.toString()
+        tvComputerTurnTotal.text = compTurnScore.toString()
+
+        if (!playerTurn && !gameOver) {
+            compTurnScore = 0
+            onHold()
+        }
+        isWinner()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("TV_YOU", tvYou.text.toString())
+        outState.putString("tvYouGamesWon", tvYouGamesWon.text.toString())
+        outState.putInt("tvYouTotalScore", playerTotalScore)
+        outState.putInt("tvYouTurnTotal", playerTurnScore)
+        outState.putString("tvComputerGamesWon", tvComputerGamesWon.text.toString())
+        outState.putInt("tvComputerTotalScore", compTotalScore)
+        outState.putInt("tvComputerTurnTotal", compTurnScore)
+        outState.putString("tvScore", tvScore.text.toString())
+        outState.putBoolean("playerTurn", playerTurn)
+        outState.putBoolean("gameOver", gameOver)
+    }
+
     fun onRollCLick(v: View) {
         val dice1Roll = dice1.roll()
         val dice2Roll = dice2.roll()
@@ -125,7 +164,6 @@ class MainActivity : AppCompatActivity() {
                         val dice2Roll = dice2.roll()
 
                         changeDiceDrawable(dice1Roll, dice2Roll)
-
                         checkForOnesComp(dice1Roll, dice2Roll)
                     }
                 }
@@ -165,22 +203,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isWinner() {
-        if (playerTotalScore + playerTurnScore >= 100) {
-            playerGamesWon += 1
-            tvYouGamesWon.text = "$playerGamesWon"
-            ivWinLose.setImageResource(R.drawable.win)
-            ivWinLose.visibility = View.VISIBLE
-            gameOver = true
-            btnHold.isEnabled = false
-            btnRoll.isEnabled = false
-        } else if (compTotalScore + compTurnScore >= 100) {
-            compGamesWon += 1
-            tvComputerGamesWon.text = "$compGamesWon"
-            ivWinLose.setImageResource(R.drawable.lose)
-            ivWinLose.visibility = View.VISIBLE
-            gameOver = true
-            btnHold.isEnabled = false
-            btnRoll.isEnabled = false
+        if (!gameOver) {
+            if (playerTotalScore + playerTurnScore >= 100) {
+                gameOver = true
+                playerGamesWon += 1
+                tvYouGamesWon.text = "$playerGamesWon"
+                ivWinLose.setImageResource(R.drawable.win)
+                ivWinLose.visibility = View.VISIBLE
+                btnHold.isEnabled = false
+                btnRoll.isEnabled = false
+            } else if (compTotalScore + compTurnScore >= 100) {
+                gameOver = true
+                compGamesWon += 1
+                tvComputerGamesWon.text = "$compGamesWon"
+                ivWinLose.setImageResource(R.drawable.lose)
+                ivWinLose.visibility = View.VISIBLE
+                btnHold.isEnabled = false
+                btnRoll.isEnabled = false
+            }
         }
     }
 

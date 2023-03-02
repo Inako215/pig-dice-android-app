@@ -16,4 +16,11 @@
     <string name="dice_total">Dice Total</string>
     <string name="roll">ROLL</string>
     <string name="hold">HOLD</string>
+    <string name="die_1">die 1</string>
+    <string name="die_2">die 2</string>
+    <string name="winlose">WinLose</string>
+    <string name="splash_screen">Splash Screen</string>
+    <string name="welcome_message">Welcome \nto the \nPig Dice Game</string>
+    <string name="about">About</string>
+    <string name="support">Support</string>
 </resources>

@@ -204,10 +204,10 @@
         android:text="@string/hold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.808"
+        app:layout_constraintHorizontal_bias="0.752"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivDice2"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_bias="0.939" />
 
     <ImageView
         android:id="@+id/ivDice1"
@@ -228,10 +228,10 @@
         android:contentDescription="@string/die_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tvComputerTurnTotal"
-        app:layout_constraintHorizontal_bias="0.43"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toEndOf="@+id/tvTurnTotal"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433"
+        app:layout_constraintVertical_bias="0.606"
         app:srcCompat="@drawable/dice_2" />
 
     <ImageView
@@ -244,8 +244,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDiceTotal"
-        app:layout_constraintVertical_bias="0.12"
+        app:layout_constraintTop_toBottomOf="@+id/tvTurnTotal"
+        app:layout_constraintVertical_bias="0.773"
         app:srcCompat="@drawable/win" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
